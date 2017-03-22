@@ -6,10 +6,15 @@
   };
 
   requirejs.config({
-    "baseUrl": "" // Same directory
+    baseUrl: "", // Same directory
+    map: {
+        "*": {
+            "d3": "d3.min"
+        }
+    },
   });
 
-  require(['heatmap_scatterplot', 'd3.min'], function (heatmap_scatterplot, d3) {
+  require(['heatmap_scatterplot', 'd3'], function (heatmap_scatterplot, d3) {
     // TODO: read data from disk
     var matrix = [['gene', 'cond-a', 'cond-b', 'cond-c', 'cond-d']];
     for (var i = 0; i < 40000; ++i) {
