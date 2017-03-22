@@ -1,23 +1,12 @@
-from os import listdir
-import json
+from os import listdir, rename, path
 import SimpleHTTPServer
 import SocketServer
-import re
-
-def as_track(file):
-    return {
-        "name": re.sub(r'.*\/', '', file),
-        "url": 'data/' + file,
-        "format": re.sub(r'.*\.', '', file)
-        # TODO: indexURL if BAM
-    }
 
 def populate_data_directory():
-    # files.txt is really for testing rather than production use.
-    files = '\n'.join(listdir('data'))
-    with open('data/files.txt', 'w') as list_file:
-        list_file.write(files)
-    # TODO: create index.json or something like that so JS can see where the files are.
+    dir = 'data'
+    files = listdir(dir)
+    assert(len(files)==1)
+    rename(path.join(dir, files[0]), path.join(dir, 'data.tsv'))
 
 def start_server():
     Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
