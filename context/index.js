@@ -15,7 +15,7 @@
   });
 
   require(['heatmap_scatterplot', 'd3'], function (heatmap_scatterplot, d3) {
-    var data_uri = "data/fake-data.tsv";
+    var data_uri = "data/data.tsv"; // put in place by on_startup.py
     d3.tsv(data_uri, function (error, matrix) {
       if (error) throw error;
       d3.select('#container')
