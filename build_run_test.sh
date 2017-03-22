@@ -3,6 +3,7 @@ set -e
 
 OWNER=mccalluc
 NAME=docker_heatmap-volcano-pca
+docker ps | grep $NAME && ( echo "'$NAME' is already running."; exit 1 )
 #docker pull $OWNER/$NAME
 docker build --tag $NAME \
              --cache-from $OWNER/$NAME \
