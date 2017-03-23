@@ -1,5 +1,5 @@
 from os import listdir, rename, path
-import SimpleHTTPServer
+import CGIHTTPServer
 import SocketServer
 
 def populate_data_directory():
@@ -9,7 +9,7 @@ def populate_data_directory():
     rename(path.join(dir, files[0]), path.join(dir, 'data.tsv'))
 
 def start_server():
-    Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+    Handler = CGIHTTPServer.CGIHTTPRequestHandler
     SocketServer.TCPServer(("", 80), Handler).serve_forever()
 
 
